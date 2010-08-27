@@ -1,4 +1,21 @@
 <?php
+
+global $gBitSystem;
+
+$gBitSystem->registerPackageInfo( STARS_PKG_NAME, array(
+	'description' => "A ratings package that allows users to rate any content using a basic interface.",
+	'license' => '<a href="http://www.gnu.org/licenses/licenses.html#LGPL">LGPL</a>',
+) );
+
+// Requirements
+$gBitSystem->registerRequirements( STARS_PKG_NAME, array(
+    'liberty' => array( 'min' => '2.1.4' ),
+));
+
+// Install process
+global $gBitInstaller;
+if( is_object( $gBitInstaller ) ){
+
 $tables = array(
 	'stars' => "
 		content_id I4 NOTNULL,
@@ -18,16 +35,9 @@ $tables = array(
 	",
 );
 
-global $gBitInstaller;
-
 foreach( array_keys( $tables ) AS $tableName ) {
 	$gBitInstaller->registerSchemaTable( STARS_PKG_NAME, $tableName, $tables[$tableName] );
 }
-
-$gBitInstaller->registerPackageInfo( STARS_PKG_NAME, array(
-	'description' => "A ratings package that allows users to rate any content using a basic interface.",
-	'license' => '<a href="http://www.gnu.org/licenses/licenses.html#LGPL">LGPL</a>',
-) );
 
 // ### Default UserPermissions
 $gBitInstaller->registerUserPermissions( STARS_PKG_NAME, array(
@@ -47,7 +57,4 @@ $gBitInstaller->registerPreferences( STARS_PKG_NAME, array(
 	array( STARS_PKG_NAME, "stars_icon_height", "22" ),
 ) );
 
-// Requirements
-$gBitInstaller->registerRequirements( STARS_PKG_NAME, array(
-    'liberty' => array( 'min' => '2.1.4' ),
-));
+}
