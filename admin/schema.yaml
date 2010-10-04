@@ -1,0 +1,42 @@
+---
+stars: 
+  homeable: false
+  required: false
+  tables: 
+    stars: |
+      
+      content_id I4 NOTNULL,
+      update_count I4,
+      rating I4
+      CONSTRAINT ', CONSTRAINT `stars_ref` FOREIGN KEY (`content_id`) REFERENCES `liberty_content`( `content_id` )'
+      
+    stars_history: |
+      
+      content_id I4 NOTNULL,
+      user_id I4 NOTNULL,
+      rating I4 NOTNULL,
+      weight I4 NOTNULL,
+      rating_time I8 NOTNULL DEFAULT 0
+      CONSTRAINT '
+      , CONSTRAINT `stars_history_content_ref` FOREIGN KEY (`content_id`) REFERENCES `liberty_content`( `content_id` )
+      , CONSTRAINT `stars_history_user_ref` FOREIGN KEY (`user_id`) REFERENCES `users_users`( `user_id` )'
+      
+  preferences: 
+    stars_used_in_display: 5
+    stars_minimum_ratings: 5
+    stars_user_weight: y
+    stars_weight_age: 5
+    stars_weight_permission: 5
+    stars_weight_activity: 5
+    stars_icon_width: 22
+    stars_icon_height: 22
+  requirements: 
+    liberty: 
+      min: 2.1.4
+  version: 0.0.0
+  description: >
+    A ratings package that allows users to
+    rate any content using a basic
+    interface.
+  license: 
+    html: '<a href="http://www.gnu.org/licenses/licenses.html#LGPL">LGPL</a>'
