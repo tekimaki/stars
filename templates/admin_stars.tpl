@@ -47,7 +47,7 @@
 						{formhelp note="Here you can select what content can be rated."}
 					{/forminput}
 				</div>
-				<div class="row submit">
+				<div class="buttonHolder row submit">
 					<input type="submit" name="stars_preferences" value="{tr}Change preferences{/tr}" />
 				</div>
 			{/legend}
@@ -78,7 +78,7 @@
 					{/forminput}
 				</div>
    			
-				<div class="row submit">
+				<div class="buttonHolder row submit">
 					<input type="submit" name="stars_preferences" value="{tr}Change preferences{/tr}" />
 				</div>
 			{/legend}
